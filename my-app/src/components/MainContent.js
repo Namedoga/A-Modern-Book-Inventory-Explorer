@@ -5,7 +5,7 @@ export default function MainContent() {
 
   return (
     <div>
-      <h1>Welcome to My Project</h1>
+      <h1>A Modern Book Inventory Explore</h1>
       <p>Count: {count}</p>
       <button onClick={() => setCount(count + 1)}>Increase</button>
     </div>
