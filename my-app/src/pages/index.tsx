@@ -1,10 +1,33 @@
-import Layout from '../Layout/Layout';
-import MainContent from '../components/MainContent';
+import { useState, useEffect } from 'react';
 
-export default function Home() {
-  return (
-    <Layout>
-      <MainContent />
-    </Layout>
-  );
+
+interface Book {
+  id: number;
+  title: string;
 }
+
+const Home = () => {
+  const [books, setBooks] = useState<Book[]>([]); 
+
+  useEffect(() => {
+
+    
+    setBooks([
+      { id: 1, title: "Book 1" },
+      { id: 2, title: "Book 2" },
+    ]);
+  }, []);
+
+  return (
+    <div>
+      <h1>Book Inventory</h1>
+      <ul>
+        {books.map(book => (
+          <li key={book.id}>{book.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Home;
