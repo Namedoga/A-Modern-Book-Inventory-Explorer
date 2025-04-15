@@ -1,6 +1,20 @@
-import "@/styles/globals.css";
-import type { AppProps } from "next/app";
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Inventory from './pages/Inventory';
+import BookDetails from './pages/BookDetails';
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/inventory" element={<Inventory />} />
+        <Route path="/book/:isbn" element={<BookDetails />} />  {/* Dynamic Route */}
+      </Routes>
+    </Router>
+  );
 }
+
+export default App;
