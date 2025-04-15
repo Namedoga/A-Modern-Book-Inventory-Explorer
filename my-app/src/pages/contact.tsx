@@ -32,7 +32,7 @@ export default function Contact() {
               backgroundColor: '#0070f3',
               color: '#fff',
               border: 'none',
-              borderRadius: '5px',
+              borderRadius: '10px',
               cursor: 'pointer',
             }}
           >
