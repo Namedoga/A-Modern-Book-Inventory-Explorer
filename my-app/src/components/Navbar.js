@@ -1,15 +1,13 @@
-
 import Link from 'next/link';
 
-const Navbar = () => (
-  <nav>
-    <ul>
-      <li><Link href="/">Home</Link></li>
-      <li><Link href="/about">About</Link></li>
-      <li><Link href="/contact">Contact</Link></li>
-      <li><Link href="/book/1">Book Details</Link></li> {}
-    </ul>
-  </nav>
-);
+function Navbar() {
+  return (
+    <nav>
+      <Link href="/">Home Page </Link>
+      <Link href="/about">About Page </Link>
+      <Link href="/contact">Contact Page </Link>
+    </nav>
+  );
+}
 
 export default Navbar;

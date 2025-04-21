@@ -1,35 +1,10 @@
-// pages/index.tsx
-import { useState, useEffect } from 'react';
-import Layout from '../layout/Layout'; 
+import Layout from '../Layout/Layout';
+import MainContent from '../components/MainContent';
 
-interface Book {
-  id: number;
-  title: string;
-}
-
-const Home = () => {
-  const [books, setBooks] = useState<Book[]>([]);
-
-  useEffect(() => {
-  
-    setBooks([
-      { id: 1, title: "Book 1" },
-      { id: 2, title: "Book 2" },
-    ]);
-  }, []);
-
+export default function Home() {
   return (
     <Layout>
-      <div>
-        <h1>Book Inventory</h1>
-        <ul>
-          {books.map(book => (
-            <li key={book.id}>
-              <a href={`/book/${book.id}`}>{book.title}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <MainContent />
     </Layout>
   );
 };
