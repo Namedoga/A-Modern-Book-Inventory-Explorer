@@ -1,11 +1,4 @@
-import { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
-import LoadingSpinner from '../components/LoadingSpinner';
-
-
-const Layout = dynamic(() => import('../Layout/Layout'));
-const MainContent = dynamic(() => import('../components/MainContent'));
-
+import React from 'react';
 
 type Book = {
   id: number;
@@ -14,30 +7,23 @@ type Book = {
   summary: string;
 };
 
-export default function Home() {
-  const [loading, setLoading] = useState(true);
-  const [books, setBooks] = useState<Book[]>([]);
+type MainContentProps = {
+  books: Book[];
+};
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      
-      setBooks([
-        { id: 1, title: "Book 1", author: "Author 1", summary: "Summary 1" },
-        { id: 2, title: "Book 2", author: "Author 2", summary: "Summary 2" },
-      ]);
-      setLoading(false);
-    }, 1000); 
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return <LoadingSpinner />;
-  }
-
+export default function MainContent({ books }: MainContentProps) {
   return (
-    <Layout>
-      <MainContent books={books} />
-    </Layout>
+    <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-8">
+      {books.map((book) => (
+        <div
+          key={book.id}
+          className="bg-white rounded-lg shadow-lg p-6 transition transform hover:-translate-y-1 hover:shadow-2xl"
+        >
+          <h2 className="text-2xl font-bold text-indigo-700 mb-2">{book.title}</h2>
+          <p className="text-gray-600 font-semibold">Author: {book.author}</p>
+          <p className="text-gray-600 italic mt-2">{book.summary}</p>
+        </div>
+      ))}
+    </div>
   );
 }

@@ -5,11 +5,27 @@ import LoadingSpinner from '../components/LoadingSpinner';
 const Layout = dynamic(() => import('../Layout/Layout'));
 const MainContent = dynamic(() => import('../components/MainContent'));
 
+type Book = {
+  id: number;
+  title: string;
+  author: string;
+  summary: string;
+};
+
 export default function Home() {
   const [loading, setLoading] = useState(true);
+  const [books, setBooks] = useState<Book[]>([]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1000); 
+    const timer = setTimeout(() => {
+      setBooks([
+        { id: 1, title: "Book 1", author: "Author 1", summary: "A fascinating journey." },
+        { id: 2, title: "Book 2", author: "Author 2", summary: "Exploring the unknown." },
+      ]);
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   if (loading) {
@@ -18,7 +34,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <MainContent />
+      <MainContent books={books} />
     </Layout>
   );
 }
