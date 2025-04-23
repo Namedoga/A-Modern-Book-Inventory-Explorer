@@ -18,11 +18,11 @@ export default function Navbar() {
               Home
             </Link>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link href="/search" className={`nav-link ${router.pathname === "/search" ? "active" : ""}`}>
               Search
             </Link>
-          </li>
+          </li> */}
           <li className="nav-item">
             <Link href="/about" className={`nav-link ${router.pathname === "/about" ? "active" : ""}`}>
               About
