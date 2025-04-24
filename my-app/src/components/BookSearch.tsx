@@ -7,6 +7,7 @@ type Book = {
   title: string;
   author: string;
   summary: string;
+  year: number;
 };
 
 export default function BookSearch() {
